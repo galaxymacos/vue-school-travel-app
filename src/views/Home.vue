@@ -12,6 +12,7 @@ export default {
 
 </script>
 <template>
+
   <div class="home">
     <h1>All destinations</h1>
     <div class="destinations">
