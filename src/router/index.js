@@ -13,7 +13,8 @@ const routes = [
 
 const router = createRouter({
     history: createWebHistory(),    // TODO: Later
-    routes
+    routes,
+    linkActiveClass: 'vue-school-active-link', // Set the class name for the active link
 })
 
 export default router
