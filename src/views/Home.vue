@@ -17,7 +17,10 @@ export default {
     <h1>All destinations</h1>
     <div class="destinations">
       <!-- set destination to router-link using :to -->
-      <router-link v-for="destination in destinations" :key="destination.id" :to="destination.slug">
+      <router-link
+          v-for="destination in destinations"
+          :key="destination.id"
+          :to="{name: 'destination.show', params: {id: destination.id}}"> <!-- set the name of the route and the wildcard param "id" -->
         <h2>{{ destination.name }}</h2>
         <!-- set image source using :src="`PATH/${dynamic_path}`" -->
         <img :src="`/images/${destination.image}`" :alt="destination.name">
