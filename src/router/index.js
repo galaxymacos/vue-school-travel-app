@@ -4,7 +4,12 @@ import Home from "@/views/Home.vue";    // load component at the beginning
 
 const routes = [
     {path: '/', name: "home", component: Home},
-    {path: '/destination/:id/:slug', name: "destination.show", component: () => import('@/views/DestinationShow.vue')}, // use :NAME in url to accept params
+    {
+        path: '/destination/:id/:slug',
+        name: "destination.show",
+        component: () => import('@/views/DestinationShow.vue'),
+        props: route => ({id: parseInt(route.params.id)})   // Use Function Mode to pass props
+    }, // use :NAME in url to accept params
 ]
 
 

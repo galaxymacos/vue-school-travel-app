@@ -11,13 +11,14 @@
 <script>
 import sourceData from "@/data.json";
 export default {
+  props: {
+    id: {type: Number, required: true}, // catch prop that's passed from router
+  },
+
   computed: {
-    destinationId() {
-      return parseInt(this.$route.params.id); // find the wildcard param "id" that we pass in index.js using this.$route.params
-    },
     destination() {
       return sourceData.destinations.find(
-          destination => destination.id === this.destinationId
+          destination => destination.id === this.id
       );
     }
   }
