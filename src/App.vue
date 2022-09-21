@@ -12,6 +12,7 @@
 <template>
   <the-navigation />  <!-- use the imported component in <template> -->
   <div class="container">
-    <router-view></router-view>
+    <!-- Force view to recreate page component in every page change -->
+    <router-view :key="$router.path"></router-view>
   </div>
 </template>
