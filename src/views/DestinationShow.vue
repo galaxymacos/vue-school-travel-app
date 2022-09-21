@@ -1,5 +1,5 @@
 <template>
-  <section class="destination">
+  <section v-if="destination" class="destination">
     <h1>{{ destination.name }}</h1>
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name">
@@ -11,13 +11,26 @@
 <script>
 import sourceData from "@/data.json";
 export default {
+  data() {
+    return {
+      destination: null
+    };
+  },
   computed: {
     destinationId() {
       return parseInt(this.$route.params.id); // find the wildcard param "id" that we pass in index.js using this.$route.params
     },
-    destination() {
-      return sourceData.destinations.find(destination => destination.id === this.destinationId);
+  },
+  methods: {
+    // Use fetch with async/await to get the api json data
+    async initData() {
+      const response = await fetch(`https://travel-dummy-api.netlify.app/${this.$route.params.slug}`)
+      this.destination = await response.json()
     }
-  }
+  },
+    async created() {
+      await this.initData()
+      this.$watch(() => this.$route.params, this.initData)  // action handler when the route changes
+    }
 };
 </script>
