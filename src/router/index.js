@@ -8,14 +8,18 @@ const routes = [
         path: '/destination/:id/:slug',
         name: "destination.show",
         component: () => import('@/views/DestinationShow.vue'),
-        props: route => ({...route.params, id: parseInt(route.params.id)})   // Use Function Mode to pass props
+        props: route => ({...route.params, id: parseInt(route.params.id)}),   // Use Function Mode to pass props
+        children: [
+            {
+                path: ':experienceSlug',
+                name: "experience.show",
+                component: () => import('@/views/ExperienceShow.vue'),
+                props: route => ({...route.params, id: parseInt(route.params.id)})   // Use Function Mode to pass props
+            }
+        ]
+
     }, // use :NAME in url to accept params
-    {
-        path: '/destination/:id/:slug/:experienceSlug',
-        name: "experience.show",
-        component: () => import('@/views/ExperienceShow.vue'),
-        props: route => ({...route.params, id: parseInt(route.params.id)})   // Use Function Mode to pass props
-    }
+
 ]
 
 
