@@ -1,6 +1,6 @@
 
 import {createRouter, createWebHistory} from "vue-router";  // createWebHashHistory to use Hash mode
-import Home from "@/views/Home.vue";    // load component at the beginning
+import Home from "@/views/Home.vue";
 
 const routes = [
     {path: '/', name: "home", component: Home},
@@ -19,6 +19,12 @@ const routes = [
         ]
 
     }, // use :NAME in url to accept params
+    // Create a catch-all path
+    {
+        path: '/:pathMatch(.*)*',
+        name: "NotFound",
+        component: () => import('@/views/NotFound.vue')
+    }
 
 ]
 
