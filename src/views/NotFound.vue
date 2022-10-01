@@ -8,8 +8,6 @@
   </div>
 </template>
 
-A template for a 404 page.
-
 <script>
 export default {
   name: "NotFound"
